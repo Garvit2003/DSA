@@ -24,8 +24,7 @@ int binarySearch(int arr[],int size,int target){
         }
 
         mid=(start+end)/2;
-
-        
+  
     }
 
     // element not found
@@ -49,3 +48,6 @@ int main(){
 
     return 0;
 }
+
+
+
