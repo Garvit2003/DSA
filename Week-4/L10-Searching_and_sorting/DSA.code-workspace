@@ -2,18 +2,13 @@
 	"folders": [
 		{
 			"path": "../.."
-		},
-		{
-			"path": "../../../Dot Dev"
-		},
-		{
-			"path": "../../../GSoC/lg_controller-master"
 		}
 	],
 	"settings": {
 		"files.associations": {
 			"array": "cpp"
 		},
-		"liveServer.settings.multiRootWorkspaceName": "Dot Dev"
+		"liveServer.settings.multiRootWorkspaceName": "Dot Dev",
+		"git.ignoreLimitWarning": true
 	}
 }
