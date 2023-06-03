@@ -6,7 +6,8 @@
 	],
 	"settings": {
 		"files.associations": {
-			"array": "cpp"
+			"array": "cpp",
+			"iostream": "cpp"
 		},
 		"liveServer.settings.multiRootWorkspaceName": "Dot Dev",
 		"git.ignoreLimitWarning": true
