@@ -29,7 +29,7 @@ int binarySearch(vector<int> &arr, int start, int end, int &key, int &n)
     }
 
     // baki recursion sambhal lega
-    // cout << "start: " << start << " end: " << end << " mid: " << mid << endl;
+    //   cout << "start: " << start << " end: " << end << " mid: " << mid << endl;
     return binarySearch(arr, start, end, key, n);
 }
 
