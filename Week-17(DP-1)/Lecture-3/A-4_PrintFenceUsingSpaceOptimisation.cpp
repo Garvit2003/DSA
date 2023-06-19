@@ -12,7 +12,7 @@ int solveUsingSpaceOptimisation(int n, int k)
     for (int i = 3; i <= n; i++)
     {
         int curr = (prev1 + prev2) * (k - 1);
-        // shift -- yhii pr glti karunga
+        // shift -- yhii pr glti karunga~
         prev2 = prev1;
         prev1 = curr;
         ;
