@@ -36,6 +36,7 @@ int solveUsingSO(vector<int> weight, vector<int> value, int n, int capacity)
             curr[wt] = max(include, exclude);
         }
         // shift:pehle pura curr chal toh jaye tab shift krna hai
+        // NOTE: yhaa fasunga
         prev = curr;
     }
     return prev[capacity];

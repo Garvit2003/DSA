@@ -6,7 +6,6 @@ int solveUsingTab(vector<int> weight, vector<int> value, int n, int capacity)
 {
     // step1: create dp array
     // NOTE:size of array and initialize krne mein fasunga
-
     vector<vector<int>> dp(n, vector<int>(capacity + 1, 0));
 
     // base case-only 1 item

@@ -4,8 +4,6 @@ using namespace std;
 
 int solveUsingSO(vector<int> weight, vector<int> value, int n, int capacity)
 {
-    // step1: create dp array
-    // vector<vector<int>> dp(n, vector<int>(capacity + 1, 0));
     // vector<int> prev(capacity + 1, 0);
     vector<int> curr(capacity + 1, 0);
 
@@ -21,6 +19,7 @@ int solveUsingSO(vector<int> weight, vector<int> value, int n, int capacity)
 
     for (int index = 1; index < n; index++)
     {
+        // NOTE: yhaa fasunga
         for (int wt = capacity; wt >= 0; wt--)
         {
             // include
