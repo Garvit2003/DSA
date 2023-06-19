@@ -34,6 +34,7 @@ int solveUsingSO(vector<int> weight, vector<int> value, int n, int capacity)
 
             curr[wt] = max(include, exclude);
         }
+        // no shifting here because ek hi array hai curr
     }
     return curr[capacity];
 }
