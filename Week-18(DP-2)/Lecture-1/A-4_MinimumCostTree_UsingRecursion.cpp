@@ -13,9 +13,9 @@ int solveUsingRec(vector<int> &arr, map<pair<int, int>, int> &maxi, int left, in
     }
 
     int ans = INT_MAX;
-    for (int i = left; i <= right; i++)
+    for (int i = left; i < right; i++)
     {
-        ans = min(ans, maxi[{left, i}] + maxi[{i + 1, right}] + solveUsingRec(arr, maxi, left, i - 1) + solveUsingRec(arr, maxi, i + 1, right));
+        ans = min(ans, maxi[{left, i}] + maxi[{i + 1, right}] + solveUsingRec(arr, maxi, left, i) + solveUsingRec(arr, maxi, i + 1, right));
     }
     return ans;
 }

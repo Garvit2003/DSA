@@ -12,6 +12,8 @@ int solveUsingMem(vector<int> &arr, map<pair<int, int>, int> &maxi, int left, in
         return 0;
     }
 
+    int n = arr.size();
+
     // Step 3: Check if ans already exists
     if (dp[left][right] != -1)
     {
@@ -19,10 +21,12 @@ int solveUsingMem(vector<int> &arr, map<pair<int, int>, int> &maxi, int left, in
     }
 
     int ans = INT_MAX;
-    for (int i = left; i <= right; i++)
+    for (int i = left; i < right; i++)
     {
-        ans = min(ans, maxi[{left, i}] + maxi[{i + 1, right}] + solveUsingMem(arr, maxi, left, i - 1, dp) + solveUsingMem(arr, maxi, i + 1, right, dp));
+        ans = min(ans, maxi[{left, i}] + maxi[{i + 1, right}] + solveUsingMem(arr, maxi, left, i, dp) + solveUsingMem(arr, maxi, i + 1, right, dp));
     }
+
+    // Step 2: Store ans in dp array
     dp[left][right] = ans;
     return dp[left][right];
 }
@@ -32,7 +36,10 @@ int main()
     vector<int> arr{6, 2, 4};
     map<pair<int, int>, int> maxi;
 
-    vector<vector<int>> dp(3, vector<int>(3, -1));
+    int n = arr.size();
+
+    // Step 1: Create dp array
+    vector<vector<int>> dp(n + 1, vector<int>(n + 1, -1));
 
     // pre computation
     for (int i = 0; i < arr.size(); i++)
@@ -44,7 +51,6 @@ int main()
         }
     }
 
-    int n = arr.size();
     int ans = solveUsingMem(arr, maxi, 0, n - 1, dp);
     cout << ans << endl;
     return ans;
