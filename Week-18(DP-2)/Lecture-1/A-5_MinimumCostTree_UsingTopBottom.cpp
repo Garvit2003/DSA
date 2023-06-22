@@ -23,7 +23,7 @@ int solveUsingMem(vector<int> &arr, map<pair<int, int>, int> &maxi, int left, in
     int ans = INT_MAX;
     for (int i = left; i < right; i++)
     {
-        ans = min(ans, maxi[{left, i}] + maxi[{i + 1, right}] + solveUsingMem(arr, maxi, left, i, dp) + solveUsingMem(arr, maxi, i + 1, right, dp));
+        ans = min(ans, maxi[{left, i}] * maxi[{i + 1, right}] + solveUsingMem(arr, maxi, left, i, dp) + solveUsingMem(arr, maxi, i + 1, right, dp));
     }
 
     // Step 2: Store ans in dp array

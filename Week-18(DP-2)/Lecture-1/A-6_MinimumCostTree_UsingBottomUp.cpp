@@ -24,7 +24,7 @@ int solveUsingTab(vector<int> &arr, map<pair<int, int>, int> &maxi, int left, in
                 int ans = INT_MAX;
                 for (int i = left; i < right; i++)
                 {
-                    ans = min(ans, maxi[{left, i}] + maxi[{i + 1, right}] + dp[left][i] + dp[i + 1][right]);
+                    ans = min(ans, maxi[{left, i}] * maxi[{i + 1, right}] + dp[left][i] + dp[i + 1][right]);
                 }
                 dp[left][right] = ans;
             }
@@ -33,6 +33,7 @@ int solveUsingTab(vector<int> &arr, map<pair<int, int>, int> &maxi, int left, in
     return dp[0][n - 1];
 }
 int main()
+
 {
     vector<int> arr{6, 2, 4};
     map<pair<int, int>, int> maxi;
