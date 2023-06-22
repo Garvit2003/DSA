@@ -9,7 +9,7 @@ int solveUsingTab(vector<int> &arr, map<pair<int, int>, int> &maxi, int left, in
     int n = arr.size();
 
     // Step 1: Create dp array
-    vector<vector<int>> dp(n + 1, vector<int>(n + 1, 0));
+    vector<vector<int>> dp(n, vector<int>(n, 0));
 
     for (int left = n - 1; left >= 0; left--)
     {

@@ -39,7 +39,7 @@ int main()
     int n = arr.size();
 
     // Step 1: Create dp array
-    vector<vector<int>> dp(n + 1, vector<int>(n + 1, -1));
+    vector<vector<int>> dp(n, vector<int>(n, -1));
 
     // pre computation
     for (int i = 0; i < arr.size(); i++)
