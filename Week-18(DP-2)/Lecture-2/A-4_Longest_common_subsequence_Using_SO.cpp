@@ -26,6 +26,7 @@ int solveUsingTab(string a, string b, int i, int j)
             curr[j] = ans;
         }
         // next
+
         prev = curr;
     }
 
