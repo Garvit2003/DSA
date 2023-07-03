@@ -2,8 +2,8 @@
 #include <vector>
 #include <unordered_map>
 #include <list>
-template <typename T>
 using namespace std;
+template <typename T>
 
 class Graph
 {
