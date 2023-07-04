@@ -37,7 +37,7 @@ public:
         }
     }
 
-    void bfs(T src, unordered_map<T, bool> &visited;)
+    void bfs(T src, unordered_map<int, bool> visited)
     {
         queue<T> q;
 
@@ -73,6 +73,7 @@ int main()
 {
 
     Graph<int> g;
+    int n = 8;
     g.addEdge(0, 1, 0);
     g.addEdge(1, 2, 0);
     g.addEdge(1, 3, 0);
@@ -84,7 +85,7 @@ int main()
     cout << endl;
 
     // creating a map for visited nodes
-    unordered_map<T, bool> visited;
+    unordered_map<int, bool> visited;
 
     // run a loop for all nodes or bcz graph disconnected hai so different different sources ke liye call bhejni hi padegi
     for (int i = 0; i <= n; i++)
@@ -94,6 +95,4 @@ int main()
             g.bfs(i, visited);
         }
     }
-
-    g.bfs(0);
 }
