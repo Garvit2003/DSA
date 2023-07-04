@@ -85,4 +85,6 @@ int main()
     g.addEdge(7, 6, 0);
     g.addEdge(7, 4, 0);
     g.printAdjacencyList();
+    cout << endl;
+    g.bfs(0);
 }
