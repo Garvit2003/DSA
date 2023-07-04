@@ -37,11 +37,9 @@ public:
         }
     }
 
-    void bfs(T src)
+    void bfs(T src, unordered_map<T, bool> &visited;)
     {
         queue<T> q;
-        // creating a map for visited nodes
-        unordered_map<T, bool> visited;
 
         // source node ko queue mein push kr diya
         q.push(src);
@@ -73,15 +71,6 @@ public:
 
 int main()
 {
-    // int n;
-    // cout << "Enter the number of nodes: ";
-    // cin >> n;
-
-    // vector<vector<int>> adj(n, vector<int>(n, 0));
-
-    // int e;
-    // cout << "Enter the number of edges: ";
-    // cin >> e;
 
     Graph<int> g;
     g.addEdge(0, 1, 0);
@@ -93,5 +82,18 @@ int main()
     g.addEdge(7, 4, 0);
     g.printAdjacencyList();
     cout << endl;
+
+    // creating a map for visited nodes
+    unordered_map<T, bool> visited;
+
+    // run a loop for all nodes or bcz graph disconnected hai so different different sources ke liye call bhejni hi padegi
+    for (int i = 0; i <= n; i++)
+    {
+        if (!visited[i])
+        {
+            g.bfs(i, visited);
+        }
+    }
+
     g.bfs(0);
 }
