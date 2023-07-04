@@ -1,0 +1,19 @@
+Here's a breakdown of the code:
+
+The necessary header files (<iostream>, <vector>, <unordered_map>, <list>, <queue>) are included.
+
+The Graph class is defined as a template class, which means it can work with different types of data.
+
+The adjList member variable is an unordered map where the key represents a node and the value is a list of its neighbors.
+
+The addEdge function is used to add an edge between two nodes (u and v) in the graph. The direction parameter determines whether the graph is directed or undirected.
+
+The printAdjacencyList function is used to print the adjacency list representation of the graph.
+
+The bfs function performs a breadth-first search traversal starting from a given source node (src). It uses a queue to keep track of the nodes to visit next and a visited map to mark the visited nodes.
+
+In the main function, an instance of the Graph class (g) is created. Edges are added to the graph using the addEdge function.
+
+The adjacency list of the graph is printed using the printAdjacencyList function.
+
+The BFS traversal is performed for each connected component in the graph using the bfs function.
