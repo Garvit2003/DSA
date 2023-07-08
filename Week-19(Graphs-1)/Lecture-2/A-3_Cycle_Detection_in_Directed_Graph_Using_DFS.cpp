@@ -47,32 +47,10 @@ public:
         visited[src] = true;
         parent[src] = -1;
 
-        // while (!q.empty())
-        // {
-        //     int frontnode = q.front();
-        //     q.pop();
-        //     for (auto nbr : adjList[frontnode])
-        //     {
-        //         if (!visited[nbr])
-        //         {
-        //             q.push(nbr);
-        //             visited[nbr] = true;
-        //             parent[nbr] = frontnode;
-        //         }
-        //         else
-        //         {
-        //             // already visited
-        //             if (nbr != parent[frontnode])
-        //             {
-        //                 return true;
-        //             }
-        //         }
-        //     }
-        // }
-
-        for (; !q.empty(); q.pop())
+        while (!q.empty())
         {
             int frontnode = q.front();
+            q.pop();
             for (auto nbr : adjList[frontnode])
             {
                 if (!visited[nbr])
@@ -91,7 +69,6 @@ public:
                 }
             }
         }
-
         return false;
     }
 
@@ -117,6 +94,31 @@ public:
         }
         return false;
     }
+
+    bool checkCyclicDirectedGraphUsingDFS(int src, unordered_map<int, bool> &visited, unordered_map<int, bool> &dfsVisited)
+    {
+        visited[src] = true;
+        dfsVisited[src] = true;
+
+        for (auto nbr : adjList[src])
+        {
+            if (!visited[nbr])
+            {
+                bool aageKaAns = checkCyclicDirectedGraphUsingDFS(nbr, visited, dfsVisited);
+                if (aageKaAns == true)
+                {
+                    return true;
+                }
+            }
+            if (visited[nbr] == true && dfsVisited[nbr] == true)
+            {
+                return true;
+            }
+        }
+        // YHII PR GLTI HOGI
+        dfsVisited[src] = false;
+        return false;
+    }
 };
 
 int main()
@@ -124,29 +126,28 @@ int main()
 
     Graph<int> g;
     int n = 5;
-    g.addEdge(0, 1, 0);
-    g.addEdge(1, 3, 0);
-    g.addEdge(0, 2, 0);
-    g.addEdge(2, 4, 0);
+    g.addEdge(0, 1, 1);
+    g.addEdge(1, 2, 1);
+    g.addEdge(2, 3, 1);
+    g.addEdge(3, 4, 1);
+    g.addEdge(4, 0, 1);
     g.printAdjacencyList();
     cout << endl;
 
-    // For BFS
     bool ans = false;
     unordered_map<int, bool> visited;
+    unordered_map<int, bool> dfsVisited;
     for (int i = 0; i < n; i++)
     {
         if (!visited[i])
         {
-            ans = g.checkCyclicUsingBFS(i, visited);
+            ans = g.checkCyclicDirectedGraphUsingDFS(i, visited, dfsVisited);
             if (ans == true)
             {
                 break;
             }
         }
     }
-
-    cout << "Printing for BFS traversal" << endl;
     if (ans == true)
     {
         cout << "Cycle is present" << endl;
@@ -156,28 +157,53 @@ int main()
         cout << "Cycle is absent" << endl;
     }
 
-    // for DFS
+    // // For BFS
+    // bool ans = false;
+    // unordered_map<int, bool> visited;
+    // for (int i = 0; i < n; i++)
+    // {
+    //     if (!visited[i])
+    //     {
+    //         ans = g.checkCyclicUsingBFS(i, visited);
+    //         if (ans == true)
+    //         {
+    //             break;
+    //         }
+    //     }
+    // }
 
-    bool ansDFS = false;
-    unordered_map<int, bool> visitedDFS;
-    for (int i = 0; i < n; i++)
-    {
-        if (!visitedDFS[i])
-        {
-            ans = g.checkCyclicUsingDFS(i, visitedDFS, -1);
-            if (ansDFS == true)
-            {
-                break;
-            }
-        }
-    }
-    cout << "Printing for BFS traversal" << endl;
-    if (ansDFS == true)
-    {
-        cout << "Cycle is present" << endl;
-    }
-    else
-    {
-        cout << "Cycle is absent" << endl;
-    }
+    // cout << "Printing for BFS traversal" << endl;
+    // if (ans == true)
+    // {
+    //     cout << "Cycle is present" << endl;
+    // }
+    // else
+    // {
+    //     cout << "Cycle is absent" << endl;
+    // }
+
+    // // for DFS
+
+    // bool ansDFS = false;
+    // unordered_map<int, bool> visitedDFS;
+    // for (int i = 0; i < n; i++)
+    // {
+    //     if (!visitedDFS[i])
+    //     {
+    //         ans = g.checkCyclicUsingDFS(i, visitedDFS, -1);
+    //         if (ansDFS == true)
+    //         {
+    //             break;
+    //         }
+    //     }
+    // }
+    // cout << "Printing for BFS traversal" << endl;
+    // if (ansDFS == true)
+    // {
+    //     cout << "Cycle is present" << endl;
+    // }
+    // else
+    // {
+    //     cout << "Cycle is absent" << endl;
+    // }
 }
