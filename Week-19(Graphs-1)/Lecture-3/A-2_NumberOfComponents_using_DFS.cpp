@@ -37,6 +37,21 @@ public:
         }
     }
 
+    int countConnectedComponents()
+    {
+        unordered_map<int, bool> visited;
+        int count = 0;
+        for (auto node : adjList)
+        {
+            if (!visited[node.first])
+            {
+                bfs(node.first, visited);
+                count++;
+            }
+        }
+        return count;
+    }
+
     void bfs(T src, unordered_map<int, bool> &visited)
     {
         queue<T> q;
@@ -67,6 +82,20 @@ public:
             }
         }
     }
+
+    void dfs(T src, unordered_map<int, bool> &visited2)
+    {
+        cout << src << ",";
+        visited2[src] = true;
+
+        for (auto neighbour : adjList[src])
+        {
+            if (!visited2[neighbour])
+            {
+                dfs(neighbour, visited2);
+            }
+        }
+    }
 };
 
 int main()
@@ -86,9 +115,7 @@ int main()
 
     // creating a map for visited nodes
     unordered_map<int, bool> visited;
-
     cout << "Printing BFS Traversal: " << endl;
-
     // run a loop for all nodes or bcz graph disconnected hai so different different sources ke liye call bhejni hi padegi
     for (int i = 0; i < n; i++)
     {
@@ -97,4 +124,25 @@ int main()
             g.bfs(i, visited);
         }
     }
+    cout << endl;
+
+    // creating a map for visited nodes
+    unordered_map<int, bool> visited2;
+    cout << "Printing DFS Traversal: " << endl;
+    // run a loop for all nodes or bcz graph disconnected hai so different different sources ke liye call bhejni hi padegi
+    for (int i = 0; i < n; i++)
+    {
+        if (!visited2[i])
+        {
+            g.dfs(i, visited2);
+        }
+    }
+
+    cout << endl;
+
+    int componentCount = g.countConnectedComponents();
+    cout << endl;
+    cout << "Number of connected components: " << componentCount << endl;
+
+    return 0;
 }
