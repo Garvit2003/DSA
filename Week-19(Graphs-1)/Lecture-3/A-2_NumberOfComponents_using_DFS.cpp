@@ -41,11 +41,11 @@ public:
     {
         unordered_map<int, bool> visited;
         int count = 0;
-        for (auto node : adjList)
+        for (auto nbr : adjList)
         {
-            if (!visited[node.first])
+            if (!visited[nbr.first])
             {
-                bfs(node.first, visited);
+                bfs(nbr.first, visited);
                 count++;
             }
         }
