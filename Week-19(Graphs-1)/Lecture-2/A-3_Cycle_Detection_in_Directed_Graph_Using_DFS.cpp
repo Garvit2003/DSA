@@ -116,15 +116,6 @@ public:
             }
         }
         // YHII PR GLTI HOGI
-        /* Here is the explanation for the code above:
-1. We are marking all the vertices as false i.e. unvisited.
-2. We will mark the vertex visited and push it into the stack.
-3. While the stack is not empty, we will pop the top element.
-4. We will print the element and mark it as visited.
-5. We will visit all the adjacent elements of the current element.
-   If any of the adjacent element is unvisited, we will push it into the stack.
-   If all the adjacent elements are visited, we will pop the element from the stack.
-6. We will repeat the process until the stack is empty. */
 
         dfsVisited[src] = false;
         return false;
