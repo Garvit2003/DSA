@@ -1,5 +1,5 @@
 #include <iostream>
-#include <stacks>
+#include <stack>
 #include <list>
 #include <queue>
 #include <unordered_map>
@@ -57,17 +57,32 @@ public:
         {
             if (!visited[neighbour])
             {
-                dfs(neighbour, visited);
+                topoSortDFS(neighbour, visited, ans);
             }
         }
         // while returning store the node in stack
+        cout << "Storing " << src << "in stack" << endl;
         ans.push(src);
     }
-}
+};
 
-int
-main()
+int main()
 {
+
+    Graph<int> g;
+    int n = 8;
+    g.addEdge(0, 1, 1);
+    g.addEdge(1, 2, 1);
+    g.addEdge(2, 3, 1);
+    g.addEdge(3, 4, 1);
+    g.addEdge(3, 5, 1);
+    g.addEdge(4, 6, 1);
+    g.addEdge(5, 6, 1);
+    g.addEdge(6, 7, 1);
+
+    g.printAdjacencyList();
+    cout << endl;
+
     unordered_map<int, bool> visited;
     stack<int> ans;
     for (int i = 0; i < n; i++)
@@ -78,7 +93,7 @@ main()
         }
     }
 
-    cout << "topo sort" << endl;
+    cout << "Topological sort" << endl;
     while (!ans.empty())
     {
         cout << ans.top();
