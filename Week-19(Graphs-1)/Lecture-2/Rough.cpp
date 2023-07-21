@@ -1,10 +1,8 @@
 #include <iostream>
-#include <vector>
-#include <unordered_map>
-#include <list>
 #include <bits/stdc++.h>
 using namespace std;
 template <typename T>
+#define pb push_back
 
 class Graph
 {
@@ -12,8 +10,13 @@ public:
     unordered_map<int, list<int>> adjList;
 
     // adding edge
-    void addEdge(int u, int v, bool direction)
+    void addEdge(T u, T v, bool direction)
     {
+        // adjList(u).pb(v);
+        // if (direction == 0)
+        // {
+        //     adjList(v).pb(u);
+        // }
         adjList[u].push_back(v);
         if (direction == 0)
         {
@@ -34,45 +37,37 @@ public:
         }
     }
 
-    void bfs(int src, unordered_map<int, bool> visited)
+    bool checkCyclicUsingBFS(int src, unordered_map<int, bool> &visited)
     {
+        queue<T> q;
+        unordered_map<int, int> parent;
 
-        queue<int> q;
-
-        // insert src into queue
         q.push(src);
-        // mark visited true
         visited[src] = true;
+        parent[src] = -1;
 
         while (!q.empty())
         {
             int frontNode = q.front();
             q.pop();
-            cout << frontNode << ",";
-
             for (auto nbr : adjList[frontNode])
             {
                 if (!visited[nbr])
                 {
                     q.push(nbr);
+                    parent[nbr] = frontNode;
                     visited[nbr] = true;
+                }
+                else
+                {
+                    if (nbr != parent[frontNode])
+                    {
+                        return true;
+                    }
                 }
             }
         }
-    }
-
-    void dfs(int src, unordered_map<int, bool> visited2)
-    {
-        cout << src << ",";
-        visited2[src] = true;
-
-        for (auto nbr : adjList[src])
-        {
-            if (!visited2[nbr])
-            {
-                dfs(nbr, visited2);
-            }
-        }
+        return false;
     }
 };
 
@@ -80,37 +75,35 @@ int main()
 {
 
     Graph<int> g;
-    int n = 8;
+    int n = 5;
     g.addEdge(0, 1, 0);
-    g.addEdge(1, 2, 0);
     g.addEdge(1, 3, 0);
-    g.addEdge(3, 5, 0);
-    g.addEdge(3, 7, 0);
-    g.addEdge(7, 6, 0);
-    g.addEdge(7, 4, 0);
+    g.addEdge(0, 2, 0);
+    g.addEdge(2, 4, 0);
     g.printAdjList();
     cout << endl;
 
-    cout << "Printing for BFS traversal" << endl;
+    bool ans = false;
 
     unordered_map<int, bool> visited;
     for (int i = 0; i < n; i++)
     {
         if (!visited[i])
         {
-            g.bfs(i, visited);
+            ans = g.checkCyclicUsingBFS(i, visited);
+            if (ans == true)
+            {
+                break;
+            }
         }
     }
-    cout << endl;
 
-    cout << "Printing for DFS traversal" << endl;
-
-    unordered_map<int, bool> visited2;
-    for (int i = 0; i < n; i++)
+    if (ans == true)
     {
-        if (!visited2[i])
-        {
-            g.dfs(i, visited2);
-        }
+        cout << "Cycle is present" << endl;
+    }
+    else
+    {
+        cout << "Cylce is absent" << endl;
     }
 }
