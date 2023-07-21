@@ -164,14 +164,14 @@ int main()
     {
         if (!visitedDFS[i])
         {
-            ans = g.checkCyclicUsingDFS(i, visitedDFS, -1);
+            ansDFS = g.checkCyclicUsingDFS(i, visitedDFS, -1);
             if (ansDFS == true)
             {
                 break;
             }
         }
     }
-    cout << "Printing for BFS traversal" << endl;
+    cout << "Printing for DFS traversal" << endl;
     if (ansDFS == true)
     {
         cout << "Cycle is present" << endl;
