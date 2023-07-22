@@ -129,8 +129,8 @@ int main()
     g.printAdjList();
     cout << endl;
 
+    // for bfs
     bool ans = false;
-
     unordered_map<int, bool> visited;
     for (int i = 0; i < n; i++)
     {

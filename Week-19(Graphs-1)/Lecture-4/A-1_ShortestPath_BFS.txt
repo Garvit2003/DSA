@@ -1,0 +1,29 @@
+The given code implements a shortest path algorithm using Breadth-First Search (BFS) in a graph represented as an adjacency list. The function shortestPathBFS takes two parameters: src, the source node from where the shortest path is to be found, and destination, the target node.
+
+Here's a step-by-step explanation of the code:
+
+Initialize a queue q to store nodes to be visited, and three unordered maps:
+
+visited: to keep track of visited nodes.
+parent: to store the parent of each node in the shortest path.
+adjList: assuming there is a global adjacency list representation of the graph.
+Enqueue the src node into the queue q, mark it as visited, and set its parent as -1 (indicating that it has no parent).
+
+Start the BFS traversal by looping until the queue q is not empty:
+
+a. Dequeue a node from the front of the queue (frontnode).
+
+b. Explore all neighbors of the frontnode in the adjacency list.
+
+c. For each unvisited neighbor (nbr), mark it as visited, set its parent as frontnode, and enqueue it into the queue q. This process will continue until all nodes reachable from the src node are visited.
+
+Once the BFS traversal is complete, reconstruct the shortest path from the src node to the destination node using the parent array.
+
+Start with the destination node.
+Traverse back to the src node by following the parent pointers and store the path in a vector ans.
+Reverse the ans vector to get the correct order of the path.
+Print the computed shortest path.
+
+Note: The code assumes that the graph is represented using an adjacency list called adjList, and it's not provided in the given code. Make sure you have the correct adjacency list representation of your graph before using this function.
+
+Overall, this code finds the shortest path from the given src node to the destination node using BFS and prints the nodes in the path in the correct order.
