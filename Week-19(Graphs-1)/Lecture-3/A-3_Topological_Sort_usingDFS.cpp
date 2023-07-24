@@ -61,7 +61,7 @@ public:
             }
         }
         // while returning store the node in stack
-        cout << "Storing " << src << "in stack" << endl;
+        cout << "Storing " << src << " in stack" << endl;
         ans.push(src);
     }
 };
@@ -93,10 +93,10 @@ int main()
         }
     }
 
-    cout << "Topological sort" << endl;
+    cout << "Printing Topological sort" << endl;
     while (!ans.empty())
     {
-        cout << ans.top();
+        cout << ans.top() << " ";
         ans.pop();
     }
 }
