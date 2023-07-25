@@ -1,0 +1,8 @@
+1. Create a distance vector of size n and initialize all values to INT_MAX.
+2. Create a set of pairs to store the distance and the node number.
+3. Set the distance of the source node to 0 and insert it into the set.
+4. While the set is not empty, do the following:
+a. Extract the node with the minimum distance from the set.
+b. For each neighbor of the extracted node, update the distance if the new distance is less than the current distance.
+c. If the distance of the neighbor is updated, then delete the previous distance and insert the new distance along with the neighbor number into the set.
+5. Print the distance vector.

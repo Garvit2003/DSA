@@ -64,7 +64,7 @@ public:
             {
                 if (nodeDistance + nbr.second < dis[nbr.first])
                 {
-                    // mujhe distance update krna hai set mein bhi aur distance wale array mein bhi. usse liye mujhe pehle ye check krna padega ki set mein wo distance hai ya nhii or simply search krna padega set mein
+                    // mujhe distance update krna hai set mein bhi aur distance wale array mein bhi. usse liye mujhe pehle ye check krna padega ki set mein wo distance hai ya nhii or simply search krna padega set mein.
                     // basicall muje wo distance chahiye hogi update krne ke liye toh main us distance ko pehle dudhunga.
 
                     // finding entry in set

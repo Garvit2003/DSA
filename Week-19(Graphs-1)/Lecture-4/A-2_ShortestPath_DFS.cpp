@@ -75,6 +75,7 @@ public:
             int frontnode = topoOrder.top();
             topoOrder.pop();
 
+            // If the distance of the current vertex from the source vertex is not INT_MAX, it means the vertex is reachable from the source.
             if (distance[frontnode] != INT_MAX)
             {
                 for (auto nbr : adjList[frontnode])
@@ -133,6 +134,7 @@ int main()
 
     cout << endl;
 
+    // stack size will be zero because during the topological sort vertices are pushed in the stack in the order of their dependencies, and then they are popped from the stack to obtain the topological order.
     cout << "Printing Stack size: " << topoOrder.size() << endl;
 
     int destination = 3;
