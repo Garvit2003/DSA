@@ -65,17 +65,23 @@ public:
                 if (nodeDistance + nbr.second < dis[nbr.first])
                 {
                     // mujhe distance update krna hai set mein bhi aur distance wale array mein bhi. usse liye mujhe pehle ye check krna padega ki set mein wo distance hai ya nhii or simply search krna padega set mein
+                    // basicall muje wo distance chahiye hogi update krne ke liye toh main us distance ko pehle dudhunga.
 
                     // finding entry in set
+                    // purani entry ko search kra set mein
                     auto result = st.find(make_pair(dis[nbr.first], nbr.first));
+
                     // if found then remove
+                    // purani entry ko remove kra set se
                     if (result != st.end())
                     {
                         st.erase(result);
                     }
 
-                    // Updation in distance array and set
+                    // Updating distance in distance array
                     dis[nbr.first] = nodeDistance + nbr.second;
+
+                    // nyii entry ko insert kr diya
                     st.insert(make_pair(dis[nbr.first], nbr.first));
                 }
             }
