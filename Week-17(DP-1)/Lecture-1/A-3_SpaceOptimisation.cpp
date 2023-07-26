@@ -4,8 +4,8 @@ using namespace std;
 
 int spaceOptimisation(int n)
 {
-    int prev1 = 0;
-    int prev2 = 1;
+    int prev2 = 0;
+    int prev1 = 1;
     int curr;
 
     if (n == 0)

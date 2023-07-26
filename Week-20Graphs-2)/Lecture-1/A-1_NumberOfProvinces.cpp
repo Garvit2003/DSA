@@ -25,8 +25,6 @@ void dfs(int src, unordered_map<int, bool> &visited, vector<vector<int>> &isConn
                 dfs(i, visited, isConnected);
             }
         }
-        {
-        }
     }
 }
 
