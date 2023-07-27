@@ -63,35 +63,6 @@ int topDown(int amount, vector<int> coins, vector<int> &dp)
     return dp[amount];
 }
 
-int bottomUp(int amount, vector<int> coins)
-{
-
-    // step-1: Create dp array
-    vector<int> dp(amount + 1, INT_MAX);
-
-    // step-2: base case dekho
-    if (amount == 0)
-    {
-        dp[0] = 0;
-    }
-
-    // step-3:follow the top down approach and write accordingly201
-    for (int target = 0; target <= amount; target++)
-    {
-        int mini = INT_MAX;
-        for (int i = 0; i < coins.size(); i++)
-        {
-            int ans = dp[target - coins[i]];
-            if (ans != INT_MAX)
-            {
-                mini = min(mini, ans + 1);
-            }
-        }
-        dp[target] = mini;
-    }
-    return dp[amount];
-}
-
 int main()
 {
     int amount;
@@ -101,9 +72,9 @@ int main()
     vector<int> coins{1, 2};
 
     // step-1 create dp array
-    // vector<int> dp{amount + 1, -1};
+    vector<int> dp{amount + 1, -1};
 
-    int ans = bottomUp(amount, coins);
+    int ans = topDown(amount, coins, dp);
     cout << "The no. of coins required are: " << ans << endl;
 
     return 0;
