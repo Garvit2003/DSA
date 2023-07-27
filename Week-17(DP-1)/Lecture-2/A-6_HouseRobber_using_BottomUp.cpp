@@ -14,7 +14,7 @@ int bottomUp(vector<int> &nums, int n)
     for (int i = 0; i <= n; i++)
     {
         int temp = 0;
-        if (i - 2 > 0)
+        if (i - 2 >= 0)
         {
             temp = dp[i - 2];
         }
