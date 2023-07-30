@@ -56,7 +56,7 @@ int bottomUp(int n, int k)
 int spaceOptimisation(int n, int k)
 {
     int prev2 = k;
-    int prev1 = k + k * (k - 1);
+    int xprev1 = k + k * (k - 1);
 
     for (int i = 3; i <= n; i++)
     {

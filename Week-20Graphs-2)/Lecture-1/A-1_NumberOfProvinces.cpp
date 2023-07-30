@@ -8,42 +8,17 @@ void dfs(int src, unordered_map<int, bool> &visited, vector<vector<int>> &isConn
 
     // row -source
     // column- we will run a loop
-    // for (int i = 0; i < isConnected.size(); i++)
-    // {
-    //     if (isConnected[src][i] == 1 && !visited[i])
-    //     {
-    //         dfs(i, visited, isConnected);
-    //     }
-    // }
-
-    for (int i = 0; i < isConnected.size(); i++)
+    for (int col = 0; col < isConnected.size(); col++)
     {
-        if (isConnected[src][i] == 1 && src != i)
+        if (isConnected[src][col] == 1)
+        // isConnected[src][col]==1 means agr col 1 hai toh wo nbr hai aur agr 0 hai toh wo nbr ni hai
         {
-            if (!visited[i])
+            if (!visited[col])
             {
-                dfs(i, visited, isConnected);
+                dfs(col, visited, isConnected);
             }
         }
     }
-}
-
-int findProvince(vector<vector<int>> &isConnected)
-{
-    unordered_map<int, bool> visited;
-    int count = 0;
-    int n = isConnected.size();
-
-    // i represents node here
-    for (int i = 0; i < n; i++)
-    {
-        if (!visited[i])
-        {
-            dfs(i, visited, isConnected);
-            count++;
-        }
-    }
-    return count;
 }
 
 int main()
@@ -54,6 +29,18 @@ int main()
         {0, 0, 1},
     };
 
-    int result = findProvince(isConnected);
-    cout << "No. of provinces are " << result;
+    unordered_map<int, bool> visited;
+    int count = 0;
+    int n = isConnected.size();
+
+    for (int i = 0; i < n; i++)
+    {
+        if (!visited[i])
+        {
+            dfs(i, visited, isConnected);
+            count++;
+        }
+        // cout << "No. of provinces are " << count<<endl;
+    }
+    cout << "No. of provinces are " << count << endl;
 }
