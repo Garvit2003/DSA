@@ -101,15 +101,19 @@ int main()
     graph<int> g;
     int n = 5;
 
-    g.addEdge(6, 3, 2, 1);
-    g.addEdge(6, 1, 14, 1);
-    g.addEdge(3, 1, 9, 1);
-    g.addEdge(3, 2, 10, 1);
-    g.addEdge(1, 2, 7, 1);
-    g.addEdge(2, 4, 15, 1);
-    g.addEdge(4, 3, 11, 1);
-    g.addEdge(6, 5, 9, 1);
-    g.addEdge(4, 5, 6, 1);
+    g.addEdge(0, 1, 5, 0);
+    g.addEdge(0, 2, 6, 0);
+    g.addEdge(2, 1, -3, 0);
+
+    // g.addEdge(6, 3, 2, 1);
+    // g.addEdge(6, 1, 14, 1);
+    // g.addEdge(3, 1, 9, 1);
+    // g.addEdge(3, 2, 10, 1);
+    // g.addEdge(1, 2, 7, 1);
+    // g.addEdge(2, 4, 15, 1);
+    // g.addEdge(4, 3, 11, 1);
+    // g.addEdge(6, 5, 9, 1);
+    // g.addEdge(4, 5, 6, 1);
 
     g.printAdjList();
 
