@@ -47,6 +47,7 @@ public:
     void dfs2(int src, unordered_map<int, bool> &visited2, unordered_map<int, list<int>> adjNew)
     {
         visited2[src] = true;
+        cout << src << ",";
 
         for (auto nbr : adjNew[src])
         {
@@ -81,6 +82,18 @@ public:
 
         // agr hum yhaa order print krte hai toh scc 0 aata hai bcz print krte waqt hum topoOrder wale stack ko empty kr de rhee hai toh usse hmme stack hi empty mil rha hai first step mein so reverse aur dfs traverse ek empty stack pr ho rha hai isliye ans 0 hai.
 
+        // so hum basically topoOrder wali stack ki copy bna ke usko print kr dete hai taki main stack pr effect na aaye
+
+        // stack<int> copyTopo = topoOrder;
+        // cout << "Printing Topoorder: " << endl;
+
+        // while (!copyTopo.empty())
+        // {
+        //     cout << copyTopo.top() << ",";
+        //     copyTopo.pop();
+        // }
+        // cout << endl;
+
         // Reverse all edges
         unordered_map<int, list<int>> adjNew;
 
@@ -108,7 +121,9 @@ public:
 
             if (!visited2[node])
             {
+                cout << "Printing " << count + 1 << "th SCC:";
                 dfs2(node, visited2, adjNew);
+                cout << endl;
                 count++;
             }
         }
@@ -131,7 +146,7 @@ int main()
     g.addEdge(6, 4, 0);
     g.addEdge(6, 7, 0);
 
-    g.printAdjList();
+    // g.printAdjList();
 
     int ans = g.countSCC(n);
     cout << "Number of SCC: " << ans << endl;
