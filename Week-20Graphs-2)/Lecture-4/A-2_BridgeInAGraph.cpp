@@ -39,6 +39,7 @@ public:
                 low[src] = min(low[src], low[nbr]);
 
                 // check for bridge
+                // yha pr glti hogi
                 if (low[nbr] > tin[src])
                 {
                     cout << nbr << "--" << src << " is a bridge." << endl;

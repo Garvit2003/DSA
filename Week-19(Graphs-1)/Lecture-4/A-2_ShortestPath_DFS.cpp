@@ -45,18 +45,20 @@ public:
             if (!visited[nbr.first])
             {
                 topoSortDFS(nbr.first, visited, ans);
-                visited[nbr.first] = true;
+                // visited[nbr.first] = true;
             }
         }
         cout << "Pushing " << src << endl;
         ans.push(src);
     }
 
-    void shortestPathDFS(int destination, stack<int> topoOrder, int n)
+    void shortestPathDFS(stack<int> topoOrder, int n)
     {
 
         vector<int> distance(n, INT_MAX);
         int src = topoOrder.top();
+        // So, to clarify in simpler terms: topoOrder.pop(); is used to remove the source node from the stack before starting the actual shortest path calculation, and its primary purpose is to ensure that the calculation starts correctly from nodes that depend on others rather than from the source node itself.
+        // it also indicates that you're moving from the initialization of direct edge distances to the comprehensive shortest path calculation.
         topoOrder.pop();
         distance[src] = 0;
 
@@ -69,6 +71,7 @@ public:
             }
         }
 
+        // While loop here serves the purpose of processing the nodes in topoOrder. However, we can also use for loop in this case but we use while loop because it gives us more clarity on the code and the use of a while loop for processing a stack or a queue until it's empty is a common idiom in programming
         while (!topoOrder.empty())
         {
 
@@ -125,14 +128,15 @@ int main()
         }
     }
 
-    cout << "Printing Topological order" << endl;
-    while (!topoOrder.empty())
-    {
-        cout << topoOrder.top() << " ";
-        topoOrder.pop();
-    }
+    /* Here printing topological order will make the stack empty resulting in making stack size 0 and passing an empty topoOrder stack in finding the shortest path using dfs resulting in no answer. */
+    // cout << "Printing Topological order" << endl;
+    // while (!topoOrder.empty())
+    // {
+    //     cout << topoOrder.top() << " ";
+    //     topoOrder.pop();
+    // }
 
-    cout << endl;
+    // cout << endl;
 
     // stack size will be zero because during the topological sort vertices are pushed in the stack in the order of their dependencies, and then they are popped from the stack to obtain the topological order.
     cout << "Printing Stack size: " << topoOrder.size() << endl;
@@ -140,7 +144,7 @@ int main()
     int destination = 3;
 
     // for shortest path using bfs
-    g.shortestPathDFS(destination, topoOrder, n);
+    g.shortestPathDFS(topoOrder, n);
 
     return 0;
 }
