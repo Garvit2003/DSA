@@ -71,7 +71,8 @@ public:
             }
         }
 
-        // While loop here serves the purpose of processing the nodes in topoOrder. However, we can also use for loop in this case but we use while loop because it gives us more clarity on the code and the use of a while loop for processing a stack or a queue until it's empty is a common idiom in programming
+        // While loop here serves the purpose of processing the nodes in topoOrder. However, we can also use for loop in this case but we use while loop because it gives us more clarity on the code and the use of a while loop for processing a stack or a queue until it's empty is a common idiom in programming.
+        // for(;!topoOrder.empty();topoOrder.pop())
         while (!topoOrder.empty())
         {
 
@@ -143,7 +144,7 @@ int main()
 
     int destination = 3;
 
-    // for shortest path using bfs
+    // for shortest path using dfs
     g.shortestPathDFS(topoOrder, n);
 
     return 0;

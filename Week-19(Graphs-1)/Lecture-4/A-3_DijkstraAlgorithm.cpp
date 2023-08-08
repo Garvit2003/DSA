@@ -2,6 +2,7 @@
 #include <bits/stdc++.h>
 #include <unordered_map>
 #include <list>
+#include <vector>
 #include <set>
 using namespace std;
 template <typename T>
@@ -37,6 +38,38 @@ public:
         }
     }
 
+    // void shortestDisDijkstra(int src, int n)
+    // {
+    //     vector<int> dis(n, INT_MAX);
+    //     priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq;
+
+    //     dis[src] = 0;
+    //     pq.push(make_pair(0, src));
+
+    //     while (!pq.empty())
+    //     {
+    //         int nodeDistance = pq.top().first;
+    //         int node = pq.top().second;
+    //         pq.pop();
+
+    //         for (auto nbr : adjList[node])
+    //         {
+    //             if (nodeDistance + nbr.second < dis[nbr.first])
+    //             {
+    //                 dis[nbr.first] = nodeDistance + nbr.second;
+    //                 pq.push(make_pair(dis[nbr.first], nbr.first));
+    //             }
+    //         }
+    //     }
+
+    //     cout << "Printing ans: " << endl;
+    //     for (int i = 0; i < n; i++)
+    //     {
+    //         cout << dis[i] << ",";
+    //     }
+    //     cout << endl;
+    // }
+
     void shortestDisDijkstra(int src, int n)
     {
         vector<int> dis(n, INT_MAX);
@@ -66,7 +99,6 @@ public:
                 {
                     // mujhe distance update krna hai set mein bhi aur distance wale array mein bhi. usse liye mujhe pehle ye check krna padega ki set mein wo distance hai ya nhii or simply search krna padega set mein.
                     // basicall muje wo distance chahiye hogi update krne ke liye toh main us distance ko pehle dudhunga.
-
                     // finding entry in set
                     // purani entry ko search kra set mein
                     auto result = st.find(make_pair(dis[nbr.first], nbr.first));
@@ -99,21 +131,17 @@ public:
 int main()
 {
     graph<int> g;
-    int n = 5;
+    int n = 3;
 
-    g.addEdge(0, 1, 5, 0);
-    g.addEdge(0, 2, 6, 0);
-    g.addEdge(2, 1, -3, 0);
-
-    // g.addEdge(6, 3, 2, 1);
-    // g.addEdge(6, 1, 14, 1);
-    // g.addEdge(3, 1, 9, 1);
-    // g.addEdge(3, 2, 10, 1);
-    // g.addEdge(1, 2, 7, 1);
-    // g.addEdge(2, 4, 15, 1);
-    // g.addEdge(4, 3, 11, 1);
-    // g.addEdge(6, 5, 9, 1);
-    // g.addEdge(4, 5, 6, 1);
+    g.addEdge(6, 3, 2, 1);
+    g.addEdge(6, 1, 14, 1);
+    g.addEdge(3, 1, 9, 1);
+    g.addEdge(3, 2, 10, 1);
+    g.addEdge(1, 2, 7, 1);
+    g.addEdge(2, 4, 15, 1);
+    g.addEdge(4, 3, 11, 1);
+    g.addEdge(6, 5, 9, 1);
+    g.addEdge(4, 5, 6, 1);
 
     g.printAdjList();
 
