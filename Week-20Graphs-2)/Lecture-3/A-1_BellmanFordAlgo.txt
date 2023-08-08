@@ -1,0 +1,33 @@
+Certainly! Here are some good practice questions that involve the Bellman-Ford algorithm:
+
+1. **Single-Source Shortest Path:**
+   Given a weighted directed graph and a source vertex, find the shortest paths from the source vertex to all other vertices.
+
+2. **Negative Weight Cycle Detection:**
+   Determine whether a given directed graph contains a negative weight cycle.
+
+3. **Arbitrage Detection:**
+   Given a currency exchange graph, determine if there's an arbitrage opportunity. In other words, if it's possible to start with a certain amount of one currency and end up with more than you started after following a sequence of currency exchanges.
+
+4. **Cheapest Flight Within K Stops:**
+   Given a directed graph with weights on edges and two vertices (source and destination), find the cheapest flight with at most K stops.
+
+5. **Time Travel:**
+   Given a list of time travel routes with starting and ending points, and the time required to travel between them, find the minimum time to travel from a given source to a destination.
+
+6. **Shortest Path with Exactly K Edges:**
+   Find the shortest path from a source vertex to a target vertex with exactly K edges.
+
+7. **Longest Path in a Weighted DAG:**
+   Find the longest path in a directed acyclic graph (DAG) with weights on edges.
+
+8. **Flight Itinerary:**
+   Given a list of airline tickets, where each ticket contains the departure and arrival airports, find the itinerary that visits all the airports.
+
+9. **Pipeline Network:**
+   Given a network of pipelines and their capacities, determine the maximum amount of flow that can be sent from a source to a sink.
+
+10. **Alternate Route:**
+    Given a graph with roadways and railways, find the shortest path between two cities while allowing to use only one type of transportation for each segment.
+
+Remember that the Bellman-Ford algorithm can also be used in various practical scenarios beyond graph problems, such as optimization, finance, and engineering. These questions should help you gain a strong understanding of how the algorithm works and how to apply it to different situations.
