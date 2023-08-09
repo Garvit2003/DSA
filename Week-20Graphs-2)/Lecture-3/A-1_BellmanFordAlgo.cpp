@@ -66,7 +66,7 @@ public:
                 int v = nbr.first;
                 int wt = nbr.second;
 
-                if (distance[u] != INT_MAX && distance[u] < wt + distance[v])
+                if (distance[u] != INT_MAX && distance[u] + wt < distance[v])
                 {
                     // distance[v] = wt + distance[u];
                     negativeCycle = true;
