@@ -73,11 +73,21 @@ public:
         cout << src << ",";
         visited2[src] = true;
 
-        for (auto neighbour : adjList[src])
+        // for (auto neighbour : adjList[src])
+        // {
+        //     if (!visited2[neighbour])
+        //     {
+        //         dfs(neighbour, visited2);
+        //     }
+        // }
+
+        // In the code, i is an iterator that points to an element within the adjacency list of the current vertex src. When you want to access the value that the iterator is pointing to, you need to dereference the iterator using the * operator. This allows you to access the actual value of the element, which is the adjacent vertex.
+        list<int>::iterator i;
+        for (i = adjList[src].begin(); i != adjList[src].end(); i++)
         {
-            if (!visited2[neighbour])
+            if (!visited2[*i])
             {
-                dfs(neighbour, visited2);
+                dfs(*i, visited2);
             }
         }
     }

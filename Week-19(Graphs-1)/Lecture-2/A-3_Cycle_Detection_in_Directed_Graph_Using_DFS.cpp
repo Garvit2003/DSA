@@ -104,6 +104,10 @@ public:
         {
             if (!visited[nbr])
             {
+                // if (checkCyclicDirectedGraphUsingDFS(nbr, visited, dfsVisited))
+                // {
+                //     return true;
+                // }
                 bool aageKaAns = checkCyclicDirectedGraphUsingDFS(nbr, visited, dfsVisited);
                 if (aageKaAns == true)
                 {
