@@ -68,22 +68,22 @@ public:
     void topoSortBFS(int n, vector<int> &ans)
     {
         queue<int> q;
-        unordered_map<int, int> indegree;
+        unordered_map<int, int> inDegree;
 
-        // indegree calculate
+        // inDegree calculate
         for (auto i : adjList)
         {
             int src = i.first;
             for (auto nbr : i.second)
             {
-                indegree[nbr]++;
+                inDegree[nbr]++;
             }
         }
 
-        // put all nodes inside queue, which has indegree=0
+        // put all nodes inside queue, which has inDegree=0
         for (int i = 0; i < n; i++)
         {
-            if (indegree[i] == 0)
+            if (inDegree[i] == 0)
             {
                 q.push(i);
             }
@@ -98,11 +98,11 @@ public:
 
             ans.push_back(frontnode);
 
-            // indegree ke liye solve
+            // inDegree ke liye solve
             for (auto nbr : adjList[frontnode])
             {
-                indegree[nbr]--;
-                if (indegree[nbr] == 0)
+                inDegree[nbr]--;
+                if (inDegree[nbr] == 0)
                 {
                     q.push(nbr);
                 }
@@ -139,21 +139,4 @@ int main()
         cout << i << ",";
     }
     cout << endl;
-
-    // unordered_map<int, bool> visited;
-    // stack<int> ans;
-    // for (int i = 0; i < n; i++)
-    // {
-    //     if (!visited[i])
-    //     {
-    //         g.topoSortDFS(i, visited, ans);
-    //     }
-    // }
-
-    // cout << "Topological sort" << endl;
-    // while (!ans.empty())
-    // {
-    //     cout << ans.top();
-    //     ans.pop();
-    // }
 }

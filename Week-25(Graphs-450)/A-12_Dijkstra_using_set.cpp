@@ -38,38 +38,6 @@ public:
         }
     }
 
-    // void shortestDisDijkstra(int src, int n)
-    // {
-    //     vector<int> dis(n, INT_MAX);
-    //     priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq;
-
-    //     dis[src] = 0;
-    //     pq.push(make_pair(0, src));
-
-    //     while (!pq.empty())
-    //     {
-    //         int nodeDistance = pq.top().first;
-    //         int node = pq.top().second;
-    //         pq.pop();
-
-    //         for (auto nbr : adjList[node])
-    //         {
-    //             if (nodeDistance + nbr.second < dis[nbr.first])
-    //             {
-    //                 dis[nbr.first] = nodeDistance + nbr.second;
-    //                 pq.push(make_pair(dis[nbr.first], nbr.first));
-    //             }
-    //         }
-    //     }
-
-    //     cout << "Printing ans: " << endl;
-    //     for (int i = 0; i < n; i++)
-    //     {
-    //         cout << dis[i] << ",";
-    //     }
-    //     cout << endl;
-    // }
-
     void shortestDisDijkstra(int src, int n)
     {
 
