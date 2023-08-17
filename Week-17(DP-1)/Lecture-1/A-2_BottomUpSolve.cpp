@@ -15,7 +15,8 @@ int bottomUpSolve(int n)
         return dp[0];
     }
     // step-:observe the behaviour of n in topBottomSolve
-    for (int i = 2; i <= n; i++)
+
+        for (int i = 2; i <= n; i++)
     {
         dp[i] = dp[i - 1] + dp[i - 2];
     }
