@@ -2,7 +2,7 @@
 #include <vector>
 using namespace std;
 
-int solveUsingMem(int weight[], int value[], int index, int capacity, vector<vector<int>> dp)
+int solveUsingMem(int weight[], int value[], int index, int capacity, vector<vector<int>> &dp)
 {
     // base case-only 1 item
     if (index == 0)
@@ -18,7 +18,9 @@ int solveUsingMem(int weight[], int value[], int index, int capacity, vector<vec
     }
 
     if (dp[index][capacity] != -1)
+    {
         return dp[index][capacity];
+    }
 
     // recursive case
     // include
