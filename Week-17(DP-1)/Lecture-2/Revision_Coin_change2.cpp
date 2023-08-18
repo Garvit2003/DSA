@@ -2,13 +2,15 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int coinChange(int amount, vector<int> coins)
+int solveUsingRecursion(vector<int> &coins, int amount)
 {
+
     // base case
     if (amount == 0)
     {
         return 0;
     }
+
     if (amount < 0)
     {
         return INT_MAX;
@@ -16,11 +18,11 @@ int coinChange(int amount, vector<int> coins)
 
     int n = coins.size();
 
-    // recursive relation
     int mini = INT_MAX;
+
     for (int i = 0; i < n; i++)
     {
-        int ans = coinChange(amount - coins[i], coins);
+        int ans = solveUsingRecursion(coins, amount - coins[i]);
         if (ans != INT_MAX)
         {
             mini = min(mini, ans + 1);
@@ -29,58 +31,68 @@ int coinChange(int amount, vector<int> coins)
     return mini;
 }
 
-int topDown(int amount, vector<int> coins, vector<int> &dp)
+int solveUsingMemiosation(vector<int> &coins, int amount, vector<int> &dp)
 {
+
     // base case
     if (amount == 0)
     {
         return 0;
     }
+
     if (amount < 0)
     {
         return INT_MAX;
     }
 
-    // step-3 check if ans already exists
+    // step3: Check if ans already exists
     if (dp[amount] != -1)
     {
         return dp[amount];
     }
 
     int n = coins.size();
-
-    // recursive relation
     int mini = INT_MAX;
+
     for (int i = 0; i < n; i++)
     {
-        int ans = topDown(amount - coins[i], coins, dp);
+        int ans = solveUsingMemiosation(coins, amount - coins[i], dp);
         if (ans != INT_MAX)
         {
             mini = min(mini, ans + 1);
         }
     }
+
+    // step2:store ans in dp
     dp[amount] = mini;
-    return dp[amount];
+    return mini;
+    // return dp[amount];
 }
 
-int bottomUp(int amount, vector<int> &coins)
+int solveUsingTabulation(vector<int> &coins, int amount)
 {
 
-    // step-1: Create dp array
+    // Step 1:Create dp array
     vector<int> dp(amount + 1, INT_MAX);
+
+    // step 2: base case
 
     dp[0] = 0;
 
-    // step-3:follow the top down approach and write accordingly201
+    int n = coins.size();
+
     for (int target = 1; target <= amount; target++)
     {
         int mini = INT_MAX;
-        for (int i = 0; i < coins.size(); i++)
+        for (int i = 0; i < n; i++)
         {
-            int ans = dp[target - coins[i]];
-            if (ans != INT_MAX)
+            if (target - coins[i] >= 0)
             {
-                mini = min(mini, ans + 1);
+                int ans = dp[target - coins[i]];
+                if (ans != INT_MAX)
+                {
+                    mini = min(mini, (ans + 1));
+                }
             }
         }
         dp[target] = mini;
@@ -90,17 +102,10 @@ int bottomUp(int amount, vector<int> &coins)
 
 int main()
 {
-    int amount;
-    cout << "Enter the value of amount: " << endl;
-    cin >> amount;
-
     vector<int> coins{1, 2};
+    int amount = 5;
 
-    // step-1 create dp array
-    // vector<int> dp{amount + 1, -1};
-
-    int ans = bottomUp(amount, coins);
-    cout << "The no. of coins required are: " << ans << endl;
-
+    int ans = solveUsingTabulation(coins, amount);
+    cout << ans;
     return 0;
 }
