@@ -13,12 +13,8 @@ int bottomUp(vector<int> &nums, int n)
     // step3:topdown se observe
     for (int i = 1; i <= n; i++)
     {
-        int temp = 0;
-        if (i - 2 >= 0)
-        {
-            temp = dp[i - 2];
-        }
-        int include = temp + nums[i];
+
+        int include = (i - 2 >= 0 ? dp[i - 2] : 0) + nums[i];
         int exclude = dp[i - 1] + 0;
         dp[i] = max(include, exclude);
     }
