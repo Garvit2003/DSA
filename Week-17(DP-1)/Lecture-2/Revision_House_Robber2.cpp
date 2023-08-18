@@ -54,30 +54,30 @@ int solveUsingMemoisation(vector<int> &nums, int n, vector<int> &dp)
     return dp[n];
 }
 
-// int solveUsingTabulation(vector<int> &nums, int n)
-// {
-//     // Step 1: create dp array
-//     vector<int> dp(n + 1, 0);
-
-//     // Step 2:base case
-//     dp[0] = nums[0];
-
-//     // Step 3:observe memoisation
-//     for (int i = 1; i <= n; i++)
-//     {
-//         int temp = 0;
-//         if (i - 2 >= 0)
-//         {
-//             temp = dp[i - 2];
-//         }
-//         int include = temp + nums[i];
-//         int exclude = dp[i - 1] + 0;
-//         dp[i] = max(include, exclude);
-//     }
-//     return dp[n];
-// }
-
 int solveUsingTabulation(vector<int> &nums, int n)
+{
+    // Step 1: create dp array
+    vector<int> dp(n + 1, 0);
+
+    // Step 2:base case
+    dp[0] = nums[0];
+
+    // Step 3:observe memoisation
+    for (int i = 1; i <= n; i++)
+    {
+        int temp = 0;
+        if (i - 2 >= 0)
+        {
+            temp = dp[i - 2];
+        }
+        int include = temp + nums[i];
+        int exclude = dp[i - 1] + 0;
+        dp[i] = max(include, exclude);
+    }
+    return dp[n];
+}
+
+int solveUsingTabulationusingTernaryOperator(vector<int> &nums, int n)
 {
     // Step 1: create dp array
     vector<int> dp(n + 1, 0);
@@ -95,12 +95,30 @@ int solveUsingTabulation(vector<int> &nums, int n)
     return dp[n];
 }
 
+int solveUsingSO(vector<int> &nums, int n)
+{
+    int prev2 = 0;
+    int prev1 = nums[0];
+
+    int curr = 0;
+
+    for (int i = 0; i <= n; i++)
+    {
+        int include = (i - 2 >= 0 ? prev2 : 0) + nums[i];
+        int exclude = prev1 + 0;
+        curr = max(include, exclude);
+        prev2 = prev1;
+        prev1 = curr;
+    }
+    return curr;
+}
+
 int main()
 {
     vector<int> nums{1, 2, 3, 1};
     int n = nums.size() - 1;
 
-    int ans = solveUsingTabulation(nums, n);
+    int ans = solveUsingSO(nums, n);
     cout << ans;
 
     return 0;
