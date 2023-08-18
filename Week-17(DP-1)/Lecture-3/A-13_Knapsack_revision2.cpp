@@ -101,6 +101,41 @@ int solveUsingTabulation(int weight[], int value[], int n, int capacity)
     return dp[n - 1][capacity];
 }
 
+int solveUsingSO(int weight[], int value[], int n, int capacity)
+{
+
+    // Step 1: Create dp array
+    vector<vector<int>> dp(n + 1, vector<int>(capacity + 1, 0));
+
+    // step 2: base case
+    for (int w = weight[0]; w <= capacity; w++)
+    {
+        if (weight[0] <= capacity)
+        {
+            dp[0][w] = value[0];
+        }
+        else
+        {
+            dp[0][w] = 0;
+        }
+    }
+
+    for (int index = 1; index < n; index++)
+    {
+        for (int wt = 0; wt <= capacity; wt++)
+        {
+            int include = 0;
+            if (weight[index] <= wt)
+            {
+                include = value[index] + dp[index - 1][wt - weight[index]];
+            }
+            int exclude = dp[index - 1][wt];
+            dp[index][wt] = max(include, exclude);
+        }
+    }
+    return dp[n - 1][capacity];
+}
+
 int main()
 {
     int weight[] = {4, 5, 1};
@@ -109,7 +144,7 @@ int main()
     int n = 3;
     int capacity = 4;
 
-    int ans = solveUsingTabulation(weight, value, n, capacity);
+    int ans = solveUsingSO(weight, value, n, capacity);
     cout << "Answer is: " << ans;
 
     return 0;
