@@ -1,21 +1,20 @@
 #include <iostream>
-#include <vector>
-#include <map>
-#include <limits.h>
+#include <bits/stdc++.h>
 using namespace std;
 
-int solveUsingRec(vector<int> &arr, map<pair<int, int>, int> &maxi, int left, int right)
+int solveUsingRecursion(vector<int> &arr, map<pair<int, int>, int> &maxi, int left, int right)
 {
-    // Base case
+    // base case
     if (left == right)
     {
         return 0;
     }
 
+    // recursive relation
     int ans = INT_MAX;
     for (int i = left; i < right; i++)
     {
-        ans = min(ans, maxi[{left, i}] * maxi[{i + 1, right}] + solveUsingRec(arr, maxi, left, i) + solveUsingRec(arr, maxi, i + 1, right));
+        ans = min(ans, maxi[{left, i}] * maxi[{i + 1, right}] + solveUsingRecursion(arr, maxi, left, i) + solveUsingRecursion(arr, maxi, i + 1, right));
     }
     return ans;
 }
@@ -36,7 +35,9 @@ int main()
     }
 
     int n = arr.size();
-    int ans = solveUsingRec(arr, maxi, 0, n - 1);
+
+    int ans = solveUsingRecursion(arr, maxi, 0, n - 1);
     cout << ans << endl;
-    // return ans;
+
+    return 0;
 }

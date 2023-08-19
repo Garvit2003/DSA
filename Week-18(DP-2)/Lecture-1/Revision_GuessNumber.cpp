@@ -82,6 +82,4 @@ int main()
 
     int ans = solveUsingTabulation(start, end);
     cout << ans;
-
-    return 0;
 }
