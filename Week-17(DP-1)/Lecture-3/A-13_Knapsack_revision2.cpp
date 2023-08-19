@@ -57,8 +57,10 @@ int solveUsingMemoisation(int weight[], int value[], int index, int capacity, ve
     int include = 0;
     if (weight[index] <= capacity)
     {
+        // include = dp[index - 1][capacity - weight[index]] + value[index];
         include = solveUsingMemoisation(weight, value, index - 1, capacity - weight[index], dp) + value[index];
     }
+    // int exclude = dp[index - 1][capacity];
     int exclude = solveUsingMemoisation(weight, value, index - 1, capacity, dp);
 
     // step 2: store ans in dp
@@ -181,7 +183,9 @@ int main()
     int n = 3;
     int capacity = 4;
 
-    int ans = solveUsingSO2(weight, value, n, capacity);
+    vector<vector<int>> dp(n + 1, vector<int>(capacity + 1, -1));
+
+    int ans = solveUsingMemoisation(weight, value, n, capacity, dp);
     cout << "Answer is: " << ans;
 
     return 0;

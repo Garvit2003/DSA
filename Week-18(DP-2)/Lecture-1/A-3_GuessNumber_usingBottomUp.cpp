@@ -3,7 +3,7 @@
 #include <limits.h>
 using namespace std;
 
-int solveUsingMem(int start, int end)
+int solveUsingTab(int start, int end)
 {
 
     int n = 10;
@@ -38,6 +38,6 @@ int main()
     int start = 1;
     int end = 10;
 
-    int ans = solveUsingMem(start, end);
+    int ans = solveUsingTab(start, end);
     cout << ans << endl;
 }
