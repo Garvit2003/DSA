@@ -29,7 +29,6 @@ int solveUsingTab(vector<int> weight, vector<int> value, int n, int capacity)
             {
                 include = value[index] + dp[index - 1][wt - weight[index]];
             }
-
             // exclude
             int exclude = dp[index - 1][wt];
 

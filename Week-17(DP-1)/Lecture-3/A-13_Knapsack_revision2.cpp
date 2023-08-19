@@ -105,18 +105,19 @@ int solveUsingSO(int weight[], int value[], int n, int capacity)
 {
 
     // Step 1: Create dp array
-    vector<vector<int>> dp(n + 1, vector<int>(capacity + 1, 0));
+    vector<int> prev(capacity + 1, 0);
+    vector<int> curr(capacity + 1, 0);
 
     // step 2: base case
     for (int w = weight[0]; w <= capacity; w++)
     {
         if (weight[0] <= capacity)
         {
-            dp[0][w] = value[0];
+            prev[w] = value[0];
         }
         else
         {
-            dp[0][w] = 0;
+            prev[w] = 0;
         }
     }
 
@@ -127,13 +128,49 @@ int solveUsingSO(int weight[], int value[], int n, int capacity)
             int include = 0;
             if (weight[index] <= wt)
             {
-                include = value[index] + dp[index - 1][wt - weight[index]];
+                include = value[index] + prev[wt - weight[index]];
             }
-            int exclude = dp[index - 1][wt];
-            dp[index][wt] = max(include, exclude);
+            int exclude = prev[wt];
+            curr[wt] = max(include, exclude);
+        }
+        prev = curr;
+    }
+    return prev[capacity];
+}
+
+int solveUsingSO2(int weight[], int value[], int n, int capacity)
+{
+
+    // Step 1: Create dp array
+    vector<int> curr(capacity + 1, 0);
+
+    // step 2: base case
+    for (int w = weight[0]; w <= capacity; w++)
+    {
+        if (weight[0] <= capacity)
+        {
+            curr[w] = value[0];
+        }
+        else
+        {
+            curr[w] = 0;
         }
     }
-    return dp[n - 1][capacity];
+
+    for (int index = 1; index < n; index++)
+    {
+        for (int wt = capacity; wt >= 0; wt--)
+        {
+            int include = 0;
+            if (weight[index] <= wt)
+            {
+                include = value[index] + curr[wt - weight[index]];
+            }
+            int exclude = curr[wt];
+            curr[wt] = max(include, exclude);
+        }
+    }
+    return curr[capacity];
 }
 
 int main()
@@ -144,7 +181,7 @@ int main()
     int n = 3;
     int capacity = 4;
 
-    int ans = solveUsingSO(weight, value, n, capacity);
+    int ans = solveUsingSO2(weight, value, n, capacity);
     cout << "Answer is: " << ans;
 
     return 0;
