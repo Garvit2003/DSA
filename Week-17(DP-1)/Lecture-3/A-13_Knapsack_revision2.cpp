@@ -135,6 +135,7 @@ int solveUsingSO(int weight[], int value[], int n, int capacity)
             int exclude = prev[wt];
             curr[wt] = max(include, exclude);
         }
+        // updating prev array to be equal to curr array
         prev = curr;
     }
     return prev[capacity];

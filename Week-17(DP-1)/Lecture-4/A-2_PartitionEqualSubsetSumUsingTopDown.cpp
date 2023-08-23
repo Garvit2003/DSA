@@ -18,6 +18,9 @@ bool solveUsingMem(int index, int target, vector<int> &nums, vector<vector<int>>
     bool include = dp[index + 1][target - nums[index]];
     bool exclude = dp[index + 1][target];
 
+    // bool include = solveUsingMem(index + 1, target - nums[index], nums, dp);
+    // bool exclude = solveUsingMem(index + 1, target, nums, dp);
+
     dp[index][target] = (include || exclude);
     return dp[index][target];
 }

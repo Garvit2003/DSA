@@ -39,7 +39,7 @@ int solveUsingSO(vector<int> weight, vector<int> value, int n, int capacity)
         // NOTE: yhaa fasunga
         prev = curr;
     }
-    return prev[capacity];
+    return curr[capacity];
 }
 
 int main()
